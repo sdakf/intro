@@ -9,5 +9,13 @@
     <button title="Oblicz">Oblicz</button>
 </form>
 <p th:text="${result}"></p>
+Historia:
+<table >
+
+
+    <tr th:each="historyElement : ${history}" class="row" th:classappend="${historyElementStat.odd}? 'odd'">
+        <td th:text="${historyElement}"></td>
+    </tr>
+</table>
 </body>
 </html>
