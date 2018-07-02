@@ -1,18 +1,21 @@
+package simpleapp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+@SpringBootApplication
 public class App {
 
     private static List<String> animals = Arrays.asList("cat", "dog", "mouse", "  rat", " pig ", "rabbit ", "hamster", "parrot"); // Tradycyjna pętla
 
     public static void main(String[] args) {
-        simplePrintFirstElementFromInput(args[0]);
-        displayTextFromInputWithCommas(animals);
-        displayTextFromInputWithCommasAndWithoutWhiteSpacesAndWithUppercase(animals);
-        calculateUserInput();
+        new SpringApplication().run(App.class);
     }
 
     private static void calculateUserInput() {
