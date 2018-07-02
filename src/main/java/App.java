@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class App {
@@ -11,6 +12,20 @@ public class App {
         simplePrintFirstElementFromInput(args[0]);
         displayTextFromInputWithCommas(animals);
         displayTextFromInputWithCommasAndWithoutWhiteSpacesAndWithUppercase(animals);
+        calculateUserInput();
+    }
+
+    private static void calculateUserInput() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj pierwszą liczbę");
+        int a = scanner.nextInt();
+        System.out.println("Podaj drugą liczbę");
+        int b = scanner.nextInt();
+        System.out.println("Podaj operację");
+        String operation = scanner.next();
+        String result = CalculatorService.calculate(a, b, operation);
+        System.out.println("Wynik to: " + result);
     }
 
     private static void displayTextFromInputWithCommasAndWithoutWhiteSpacesAndWithUppercase(List<String> collection) {
