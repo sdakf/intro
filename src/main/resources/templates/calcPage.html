@@ -12,8 +12,7 @@
         <input autofocus class="form-control" type="text" name="input"></br>
         <button class="btn btn-lg btn-primary btn-block" title="Oblicz">Oblicz</button>
     </form>
-    <p class=th:text="${result}"></p>
-    <h1 style="margin: auto" class="text-center" th:text=" ${result}">Twój wynik:</h1>
+    <h1 style="margin: auto" class="text-center" th:utext=" ${result}">Twój wynik:</h1>
     </br>
     <ul th:each="historyElement : ${history}" class="list-group cal-hist-item">
         <li th:text="${historyElement}" th:classappend="${historyElementStat.odd}? 'odd'"

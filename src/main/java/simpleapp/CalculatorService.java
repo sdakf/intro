@@ -18,13 +18,17 @@ public class CalculatorService {
     @GetMapping(value = "/calc")
     public String calculate(@RequestParam(required = false) String input, Map<String, Object> model) {
         if (input != null && !input.isEmpty()) {
-            String[] split = input.split(" ");
-            String result = calculate(Integer.valueOf(split[0]), Integer.valueOf(split[2]), split[1]);
-            model.put("result", "Twój wynik to: " + result);
-            saveResultToFile(split[0] + split[1] + split[2] + "=" + result);
-            List<String> history = getHistory();
-            Collections.sort(history, Comparator.reverseOrder());
-            model.put("history", history);
+            try {
+                String[] split = input.split(" ");
+                String result = calculate(Integer.valueOf(split[0]), Integer.valueOf(split[2]), split[1]);
+                model.put("result", "Twój wynik to: " + result);
+                saveResultToFile(split[0] + split[1] + split[2] + "=" + result);
+                List<String> history = getHistory();
+                Collections.sort(history, Comparator.reverseOrder());
+                model.put("history", history);
+            } catch (Exception e) {
+                model.put("result", "Błędne dane: " + input);
+            }
 
         }
         return "calcPage";
