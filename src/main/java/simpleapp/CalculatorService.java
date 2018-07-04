@@ -9,10 +9,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class CalculatorService {
@@ -26,6 +23,7 @@ public class CalculatorService {
             model.put("result", "Twój wynik to: " + result);
             saveResultToFile(split[0] + split[1] + split[2] + "=" + result);
             List<String> history = getHistory();
+            Collections.sort(history, Comparator.reverseOrder());
             model.put("history", history);
 
         }

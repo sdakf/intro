@@ -1,21 +1,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <div th:replace="fragments/header :: header-css"/>
+
     <meta charset="UTF-8">
     <title>Kalkulator</title>
 </head>
 <body>
-<form action="/calc" method="get">
-    <input type="text" name="input"></br>
-    <button title="Oblicz">Oblicz</button>
-</form>
-<p th:text="${result}"></p>
-Historia:
-<table >
-
-
-    <tr th:each="historyElement : ${history}" class="row" th:classappend="${historyElementStat.odd}? 'odd'">
-        <td th:text="${historyElement}"></td>
-    </tr>
-</table>
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+    <form action="/calc" method="get" class="form-signin">
+        <input autofocus class="form-control" type="text" name="input"></br>
+        <button class="btn btn-lg btn-primary btn-block" title="Oblicz">Oblicz</button>
+    </form>
+    <p class=th:text="${result}"></p>
+    <h1 style="margin: auto" class="text-center" th:text=" ${result}">Twój wynik:</h1>
+    </br>
+    <ul th:each="historyElement : ${history}" class="list-group cal-hist-item">
+        <li th:text="${historyElement}" th:classappend="${historyElementStat.odd}? 'odd'"
+            class="collapse list-group-item">First item
+        </li>
+    </ul>
+</div>
 </body>
 </html>
